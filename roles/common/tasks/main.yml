@@ -1,0 +1,5 @@
+- name: Setup Hostname
+  ansible.builtin.shell: set-hostname {{COMPONENT}}
+  
+
+  

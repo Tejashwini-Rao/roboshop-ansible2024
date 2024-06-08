@@ -1,0 +1,8 @@
+- name: Install Maven
+  ansible.builtin.yum:
+    name:  maven
+    
+- name: Add the user roboshop
+  ansible.builtin.user:
+    name: roboshop
+    

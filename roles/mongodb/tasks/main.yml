@@ -1,0 +1,35 @@
+- name: Copy MongoDB repo file
+  ansible.builtin.copy:
+      src: rabbitmq.repo
+      dest: /etc/yum.repos.d/rabbitmq.repo
+      
+-   name: Install the latest version of mongodb
+    ansible.builtin.yum:
+      name: mongodb-org
+      state: installed
+      
+- name: Update Listen IP address in config file
+  ansible.builtin.replace:
+    path: /etc/mongod.conf
+    regexp: '127.0.0.1'
+    replace: ' 0.0.0.0 '
+    
+- name: Restart service mongod
+  ansible.builtin.service:
+    name: mongod
+    state: restarted
+    
+
+- name: Download MongoDB Schema files
+  ansible.builtin.unarchive:
+    src: "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
+    dest: /tmp
+    remote_src: yes
+
+- name: Load Schema
+  community.mongodb.mongodb_shell:
+    file: "/tmp/mongodb-main/{{item}}.js"
+    idempotent: yes
+  loop:
+    - catalogue
+    - users
