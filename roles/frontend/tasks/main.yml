@@ -25,7 +25,7 @@
   ansible.builtin.template:
       src: roboshop.config
       dest: /etc/nginx/default.d/roboshop.config
-      remote_src: yes
+     
 
 - name: Restart service nginx
   ansible.builtin.service:
