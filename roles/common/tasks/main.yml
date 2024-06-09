@@ -1,5 +1,5 @@
 - name: Setup Hostname
-  ansible.builtin.shell: set-hostname {{COMPONENT}}
+  ansible.builtin.shell: set-hostname {{APP_COMPONENT_ROLE}}
   
 - name: Install Ansible SSM Python3 Deps
   ansible.builtin.pip:
