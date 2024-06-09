@@ -22,13 +22,12 @@
     
 
 - name: Copy roboShop Configuration File
-  ansible.builtin.template:
+  ansible.builtin.templates:
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
     remote_src: yes
     
     
-
 - name: Restart service nginx
   ansible.builtin.service:
     name: nginx
