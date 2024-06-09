@@ -2,6 +2,12 @@
   ansible.builtin.user:
     name: roboshop
     comment: RoboShop Application User
+    
+- name: Unarchive a file and extract it
+  ansible.builtin.unarchive:
+    src: "https://github.com/roboshop-devops-project/{{COMPONENT}}/archive/main.zip"
+    dest: /tmp
+    remote_src: yes
 
 - name: Remove Old App Content
   ansible.builtin.file:
