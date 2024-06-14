@@ -31,6 +31,8 @@
   community.mongodb.mongodb_shell:
     file: "/tmp/mongodb-main/{{item}}.js"
     idempotent: yes
+    ignore_errors: true
   loop:
     - catalogue
     - users
+   
