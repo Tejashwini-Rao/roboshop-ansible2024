@@ -13,7 +13,7 @@
   ansible.builtin.replace:
     path: /etc/mongod.conf
     regexp: '127.0.0.1'
-    replace: ' 0.0.0.0 '
+    replace: '0.0.0.0'
     
 - name: Restart service mongod
   ansible.builtin.service:
@@ -31,7 +31,7 @@
   community.mongodb.mongodb_shell:
     file: "/tmp/mongodb-main/{{item}}.js"
     idempotent: yes
-    ignore_errors: true
+
   loop:
     - catalogue
     - users
