@@ -26,12 +26,15 @@
     dest: /tmp
     remote_src: yes
 
-- name: Load Schema
+
+- name: Load mongo Schema
   community.mongodb.mongodb_shell:
+    login_user: admin1
+    login_password: RoboShop123
     file: "/tmp/mongodb-main/{{item}}.js"
     idempotent: yes
-
+    
   loop:
     - catalogue
     - users
-   
+
