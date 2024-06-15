@@ -1,0 +1,7 @@
+- name: Install Ansible SSM Python3 Deps
+  ansible.builtin.pip:
+    name: "{{item}}"
+    executable: pip3
+  loop:
+    - botocore
+    - boto3
