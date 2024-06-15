@@ -38,7 +38,8 @@
   
 - name: Load Schema
   community.mongodb.mongodb_shell:
-    login_host: mongodb-dev.roboshop.internal
+    login_host: admin
+    password:
     file: "/tmp/mongodb-main/{{item}}.js"
     idempotent: yes
   loop:
