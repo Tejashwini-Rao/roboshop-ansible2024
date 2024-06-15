@@ -27,10 +27,21 @@
     remote_src: yes
 
 
+#- name: Load Schema
+#  community.mongodb.mongodb_shell:
+#    file: "/tmp/mongodb-main/{{item}}.js"
+#    idempotent: yes
+#  loop:
+#    - catalogue
+#    - users
+#  mongodb-dev.roboshop.internal
+  
 - name: Load Schema
   community.mongodb.mongodb_shell:
+    login_host: mongodb-dev.roboshop.internal
     file: "/tmp/mongodb-main/{{item}}.js"
     idempotent: yes
   loop:
     - catalogue
     - users
+
