@@ -1,5 +1,5 @@
 - name: Setup RoboShop
-  hosts: "{{HOSTS}}"
+  hosts: all
   become: true
   roles:
     - "{{APP_COMPONENT_ROLE}}"
