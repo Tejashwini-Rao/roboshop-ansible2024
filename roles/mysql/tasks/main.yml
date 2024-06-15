@@ -1,9 +1,4 @@
-- name: Install Python Deps
-  ansible.builtin.yum:
-    name:
-      - python3-PyMySQL
-      - mysql
-    state: installed
+
 
 - name: Copy MySQL Repo file
   ansible.builtin.copy:
@@ -47,6 +42,13 @@
 - name: Check Validate plugin exists
   ansible.builtin.shell: echo "uninstall plugin validate_password;" | mysql -uroot -p{{MYSQL_PASSWORD}}
   ignore_errors: yes
+
+- name: Install Python Deps
+  ansible.builtin.yum:
+    name:
+      - python3-PyMySQL
+      - mysql
+    state: installed
 
 - name: Download MySQL Schema files
   ansible.builtin.unarchive:
