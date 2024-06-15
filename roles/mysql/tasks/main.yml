@@ -1,5 +1,3 @@
-
-
 - name: Copy MySQL Repo file
   ansible.builtin.copy:
     src: mysql.repo
@@ -7,6 +5,7 @@
 
 - name: Disable MySQL 8 Version repo
   ansible.builtin.shell: dnf module disable mysql -y
+  idempotent: yes
   
 - name: Install mysql
   ansible.builtin.yum:
