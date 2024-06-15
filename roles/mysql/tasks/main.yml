@@ -1,3 +1,10 @@
+- name: Install Python Deps
+  ansible.builtin.yum:
+    name:
+      - python3-PyMySQL
+      - mysql
+    state: installed
+
 - name: Copy MySQL Repo file
   ansible.builtin.copy:
     src: mysql.repo
