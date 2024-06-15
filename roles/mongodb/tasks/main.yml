@@ -29,8 +29,6 @@
 
 - name: Load mongo Schema
   ansible.builtin.shell:
-    cd /tmp
-    unzip mongodb.zip
     cd mongodb-main
     mongo < catalogue.js
     mongo < users.js
