@@ -1,2 +1,2 @@
-COMPONENT: payment
-APP_TYPE: python
+COMPONENT: user
+APP_TYPE: nodejs
