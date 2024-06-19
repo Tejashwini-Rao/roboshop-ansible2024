@@ -1,3 +1,6 @@
+- name: Install Prometheus Node Exporter
+  ansible.builtin.shell: labauto prometheus
+
 - name: Copy Prometheus Configuration
   ansible.builtin.template:
     src: prometheus.yml
