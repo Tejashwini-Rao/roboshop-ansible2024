@@ -1,12 +1,10 @@
 - name: Install Prometheus Node Exporter
   ansible.builtin.shell: labauto prometheus
 
-- name: Copy Prometheus Configuration
+- name: Copy Prometheus Config
   ansible.builtin.template:
     src: prometheus.yml
     dest: /opt/prometheus/prometheus.yml
-    remote_src: yes
-  notify: Restart prometheus
 
 #- name: Copy Alert Rules
 #  ansible.builtin.template:
