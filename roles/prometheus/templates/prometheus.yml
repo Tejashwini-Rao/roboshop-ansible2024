@@ -28,4 +28,4 @@ scrape_configs:
             values: ["Yes"]
     relabel_configs:
       - source_labels: [__meta_ec2_tag_Name]
-        target_label: "COMPONENT"
+        target_label: "component"
