@@ -3,20 +3,15 @@
     src: mysql.repo
     dest: /etc/yum.repos.d/mysql.repo
 
-#- name: Disable MySQL 8 Version repo
-#  ansible.builtin.shell: dnf module disable mysql -y
+- name: Disable MySQL 8 Version repo
+  ansible.builtin.shell: dnf module disable mysql -y
 
-  
-- name: Install mysql
+- name: Install MySQL Server
   ansible.builtin.yum:
-     name: mysql-community-server
-     state: installed
-     
-- name: Start service mysqld
-  ansible.builtin.service:
-      name: mysqld
-      state: restarted
-      enabled: true
+    name:
+      - mysql-community-server
+      - python3-PyMySQL
+    state: installed
       
 - name: Check Root Default Password
   block:
