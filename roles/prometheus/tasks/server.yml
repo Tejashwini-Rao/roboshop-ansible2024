@@ -5,6 +5,7 @@
   ansible.builtin.template:
     src: prometheus.yml
     dest: /opt/prometheus/prometheus.yml
+    remote_src: yes
   notify: Restart prometheus
 
 #- name: Copy Alert Rules
