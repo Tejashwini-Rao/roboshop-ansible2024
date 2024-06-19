@@ -1,5 +1,5 @@
 - name: Install Prometheus Node Exporter
-  ansible.builtin.shell: labauto prometheus
+  ansible.builtin.shell: labauto prometheus-server
 
 - name: Copy Prometheus Config
   ansible.builtin.template:
