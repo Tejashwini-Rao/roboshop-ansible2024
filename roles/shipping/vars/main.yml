@@ -1,2 +1,5 @@
+
 COMPONENT: shipping
 APP_TYPE: java
+LOG_FILE: /var/log/shipping.log
+LOG_TYPE: raw

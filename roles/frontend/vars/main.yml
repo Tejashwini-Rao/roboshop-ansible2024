@@ -1,2 +1,4 @@
-COMPONENT: frontend
-APP_TYPE : Nginx
+COMPONENT: catalogue
+APP_TYPE: nodejs
+LOG_FILE: /var/log/catalogue.log
+LOG_TYPE: json

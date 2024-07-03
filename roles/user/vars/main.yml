@@ -1,2 +1,5 @@
+
 COMPONENT: user
 APP_TYPE: nodejs
+LOG_FILE: /var/log/user.log
+LOG_TYPE: json

@@ -26,3 +26,29 @@
     dest: /home/roboshop/{{COMPONENT}}
     remote_src: yes
   become_user: roboshop
+  
+  
+#   - name: Grab default version if APP_VERSION is not defined
+#      ansible.builtin.shell: curl -s http://{{NEXUS_USER}}:{{NEXUS_PASSWORD}}@nexus.roboshop.internal:8081/service/rest/repository/browse/{{COMPONENT}}/ | grep zip  | tail -1 | sed -e 's/>/ /g' -e 's/</ /g' | xargs -n1 | grep zip$ | grep -v http  | awk -F - '{print $2}' | sed -e 's/.zip//'
+#      when: APP_VERSION is not defined
+#      register: out
+#
+#    - name: Declare APP_VERSION if not defined
+#      when: APP_VERSION is not defined
+#      ansible.builtin.set_fact:
+#        APP_VERSION: "{{out.stdout}}"
+#
+#    - name: Download {{COMPONENT}} Content & Extract it
+#      ansible.builtin.unarchive:
+#        src: "http://{{NEXUS_USER}}:{{NEXUS_PASSWORD}}@nexus.roboshop.internal:8081/repository/{{COMPONENT}}/{{COMPONENT}}-{{APP_VERSION}}.zip"
+#        dest: /home/roboshop/{{COMPONENT}}
+#        remote_src: yes
+#      become_user: roboshop
+  
+  #
+  #- name: Copy {{COMPONENT}} Content
+  #  ansible.builtin.copy:
+  #    src: /tmp/{{COMPONENT}}-main/
+  #    dest: /home/roboshop/{{COMPONENT}}
+  #    remote_src: yes
+  #  become_user: roboshop
