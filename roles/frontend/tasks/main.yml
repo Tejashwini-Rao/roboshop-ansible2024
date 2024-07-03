@@ -2,30 +2,36 @@
   ansible.builtin.yum:
     name: nginx
     state: installed
-      
-- name: Remove old HTML content
+
+- name: Remove old HTTP Documents
   ansible.builtin.file:
-      path: /usr/share/nginx/html
-      state: absent
+    path: /usr/share/nginx/html
+    state: absent
 
--   name: Download frontend App content
-    ansible.builtin.unarchive:
-      src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
-      dest: /usr/share/nginx/html
-      remote_src: yes
-      
-- name: Copy Nginx Config
-  ansible.builtin.template:
-    src: nginx.conf
-    dest: /etc/nginx/nginx.conf
+- name: Create HTTP Document Directory
+  ansible.builtin.file:
+    path: /usr/share/nginx/html
+    state: directory
 
-- name: Copy RoboShop Config file to Nginx
+- name: Copy RoboShop Configuration File
   ansible.builtin.template:
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
+  notify: Restart Nginx Service
+
+- name: Copy Nginx Configuration File
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+  notify: Restart Nginx Service
 
 - name: Start Nginx Service
   ansible.builtin.systemd:
-    state: restarted
     name: nginx
+    state: started
     enabled: yes
+
+#- name: Include Filebeat
+#  ansible.builtin.include_role:
+#    name: elk
+#    tasks_from: filebeat
