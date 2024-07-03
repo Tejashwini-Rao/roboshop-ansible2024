@@ -8,21 +8,15 @@
       path: /usr/share/nginx/html
       state: absent
 
-
-
 - name: Copy frontend content
   ansible.builtin.copy:
     src: /tmp/frontend-main/static/
     dest: /usr/share/nginx/html
-    remote_src: yes
     
-
 - name: Copy roboShop Configuration File
   ansible.builtin.template:
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
-    remote_src: yes
-    
     
 - name: Restart service nginx
   ansible.builtin.service:
