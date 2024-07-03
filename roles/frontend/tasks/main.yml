@@ -8,20 +8,24 @@
       path: /usr/share/nginx/html
       state: absent
 
-- name: Copy frontend content
-  ansible.builtin.copy:
-    src: /tmp/frontend-main/static/
-    dest: /usr/share/nginx/html
-    remote_src: yes
-    
-- name: Copy roboShop Configuration File
+-   name: Download frontend App content
+    ansible.builtin.unarchive:
+      src: https://roboshop-artifacts.s3.amazonaws.com/frontend.zip
+      dest: /usr/share/nginx/html
+      remote_src: yes
+      
+- name: Copy Nginx Config
+  ansible.builtin.template:
+    src: nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: Copy RoboShop Config file to Nginx
   ansible.builtin.template:
     src: roboshop.conf
     dest: /etc/nginx/default.d/roboshop.conf
-    
-- name: Restart service nginx
-  ansible.builtin.service:
-    name: nginx
+
+- name: Start Nginx Service
+  ansible.builtin.systemd:
     state: restarted
-    enabled: True
-   
+    name: nginx
+    enabled: yes
