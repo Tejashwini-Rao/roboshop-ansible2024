@@ -17,12 +17,12 @@
     name: prometheus
     tasks_from: client
     
-- name: Create rsyslog configuration
-  ansible.builtin.template:
-    src: rsyslog.conf
-    dest: /etc/rsyslog.d/{{COMPONENT}}.conf
-    remote_src: yes
-  when: APP_TYPE == "java" or APP_TYPE == "python" or APP_TYPE == "nodejs"
+#- name: Create rsyslog configuration
+#  ansible.builtin.template:
+#    src: rsyslog.conf
+#    dest: /etc/rsyslog.d/{{COMPONENT}}.conf
+#    remote_src: yes
+#  when: APP_TYPE == "java" or APP_TYPE == "python" or APP_TYPE == "nodejs"
 
 - name: Restart rsyslog
   ansible.builtin.systemd:
